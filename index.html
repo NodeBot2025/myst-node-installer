@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mysterium Node Auto-Installer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #121212;
+      color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    button {
+      padding: 12px 24px;
+      background-color: #4caf50;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    pre {
+      background: #1e1e1e;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      max-width: 90vw;
+    }
+  </style>
+</head>
+<body>
+  <h1>Install Mysterium Node</h1>
+  <p>Click the button to copy the PowerShell install command. Paste it into PowerShell (Admin).</p>
+
+  <pre id="command">
+powershell -Command "iwr -useb https://raw.githubusercontent.com/NodeBot2025/myst-node-installer/main/install.ps1 | iex"
+  </pre>
+
+  <button onclick="copyCommand()">Copy Install Command</button>
+
+  <script>
+    function copyCommand() {
+      const text = document.getElementById("command").innerText.trim();
+      navigator.clipboard.writeText(text).then(() => alert("Command copied! Paste it into PowerShell (Admin)."));
+    }
+  </script>
+</body>
+</html>
